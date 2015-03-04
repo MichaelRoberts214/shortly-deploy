@@ -94,7 +94,7 @@ xdescribe('', function() {
         link = new Link({
           url: 'http://www.roflzoo.com/',
           title: 'Rofl Zoo - Daily funny animal pictures',
-          base_url: 'http://127.0.0.1:4568',
+          base_url: 'http://' + process.env.HOST + ':' + process.env.PORT,
           visits: 0
         })
 
