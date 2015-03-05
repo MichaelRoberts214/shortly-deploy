@@ -43,8 +43,9 @@ module.exports = function(grunt) {
     },
 
     jshint: {
-      files: [
-        // Add filespec list here
+      files: ['./**/*.js',
+              '!./node_modules/**/*',
+              '!./public/build/**/*'
       ],
       options: {
         force: 'true',
@@ -117,7 +118,7 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('build', [
-    'concat', 'uglify', 'cssmin'
+    'jshint', 'concat', 'uglify', 'cssmin'
   ]);
 
   grunt.registerTask('upload', function(n) {
