@@ -83,6 +83,9 @@ module.exports = function(grunt) {
 
     shell: {
       prodServer: {
+        shell: {
+          command: 'sh deploy.sh'
+        }
       }
     },
   });
@@ -124,6 +127,7 @@ module.exports = function(grunt) {
   grunt.registerTask('upload', function(n) {
     if(grunt.option('prod')) {
       // add your production server task here
+      grunt.task.run(['shell', 'nodemon']);
     } else {
       grunt.task.run([ 'server-dev' ]);
     }
@@ -131,6 +135,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('deploy', [
     // add your deploy tasks here
+    'test', 'upload'
   ]);
 
 
