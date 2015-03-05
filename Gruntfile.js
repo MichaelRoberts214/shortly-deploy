@@ -3,9 +3,16 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     concat: {
-      dist: {
-        src: ['/public/*.js'],
-        dest: '/public/built.js',
+      libs: {
+        src: ['public/lib/underscore.js',
+                'public/lib/jquery.js',
+                'public/lib/backbone.js',
+                'public/lib/handlebars.js'],
+        dest: 'public/lib/built_libs.js',
+      },
+      client: {
+        src: 'public/client/*.js',
+        dest: 'public/client/built_client.js'
       }
     },
 
@@ -98,6 +105,7 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('build', [
+    'concat'
   ]);
 
   grunt.registerTask('upload', function(n) {
