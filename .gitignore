@@ -5,6 +5,7 @@ azure.err
 iisnode.yml
 db/shortly.sqlite
 node_modules/
+public/build/
 
 # Icon must ends with two \r.
 Icon

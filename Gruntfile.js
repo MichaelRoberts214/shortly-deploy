@@ -8,11 +8,11 @@ module.exports = function(grunt) {
                 'public/lib/jquery.js',
                 'public/lib/backbone.js',
                 'public/lib/handlebars.js'],
-        dest: 'public/lib/built_libs.js',
+        dest: 'public/build/libs.js',
       },
       client: {
         src: 'public/client/*.js',
-        dest: 'public/client/built_client.js'
+        dest: 'public/build/client.js'
       }
     },
 
@@ -32,6 +32,14 @@ module.exports = function(grunt) {
     },
 
     uglify: {
+      libs: {
+        src: 'public/build/libs.js',
+        dest: 'public/build/libs.min.js'
+      },
+      client: {
+        src: 'public/build/client.js',
+        dest: 'public/build/client.min.js'
+      }
     },
 
     jshint: {
@@ -49,6 +57,10 @@ module.exports = function(grunt) {
     },
 
     cssmin: {
+      styles: {
+        src: 'public/style.css',
+        dest: 'public/build/style.min.css'
+      }
     },
 
     watch: {
@@ -105,7 +117,7 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('build', [
-    'concat'
+    'concat', 'uglify', 'cssmin'
   ]);
 
   grunt.registerTask('upload', function(n) {
